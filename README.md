@@ -15,7 +15,7 @@ This is a Django REST Framework-based API for managing tasks. It allows users to
 Ensure you have the following installed:
 - Python 3.x
 - pip (Python package manager)
-- SQLite (default)
+- PostgreSQL or SQLite (default)
 
 ### Installation Steps
 
@@ -42,20 +42,20 @@ Ensure you have the following installed:
 
 ### **1. Create a Task**
 - **Endpoint:** `POST /tasks/create/`
-Name
-Description
-Task type
-Completed at
-dd-mm-yyyy --:-- --
-Status
+- **Request Body (JSON):**
+  ```json
+  {
+    "name": "Fix Backend Bug",
+    "description": "Resolve the issue in API response handling."
+  }
+  ```
 - **Response:**
   ```json
   {
     "id": 1,
     "name": "Fix Backend Bug",
     "description": "Resolve the issue in API response handling.",
-    "Task type": project
-    "completed at": "2025-03-26T12:00:00Z",
+    "created_at": "2025-03-26T12:00:00Z",
     "status": "Pending"
   }
   ```
@@ -83,40 +83,22 @@ Status
 ### **3. Retrieve Tasks for a User**
 - **Endpoint:** `GET /tasks/user/{user_id}/`
 - **Response:**
- 
-[
+  ```json
+  [
     {
-        "id": 2,
-        "assigned_users": [
-        {
-                "id": 2,
-                "name": "user2",
-                "email": "user234@gmail.com",
-                "mobile": "8855223344"
-            }
-        ],
-        "name": "project",
-        "description": "a project create by python and django",
-        "created_at": "2025-03-26T07:50:33.484073Z",
-        "task_type": "Project",
-        "completed_at": "2025-03-07T13:20:00Z",
-        "status": "completed"
-    },
-    {
-        "id": 3,
-        "assigned_users": [
-            {
-                "id": 2,
-                "name": "user2",
-                "email": "user234@gmail.com",
-                "mobile": "8855223344"
-            }
-        ],
-        "name": "Blog",
-        "description": "A blog project created by html, css and django",
-        "created_at": "2025-03-26T07:57:09.173269Z",
-        "task_type": "Project",
-        "completed_at": "2025-03-02T17:28:00Z",
-        "status": "completed"
+      "id": 1,
+      "name": "Fix Backend Bug",
+      "description": "Resolve the issue in API response handling."
     }
-]
+  ]
+  ```
+
+---
+
+## Test Credentials
+- **Admin Panel:** `http://127.0.0.1:8000/admin/`
+- **Username:** `admin`
+- **Password:** `admin123` (or my created superuser credentials)
+
+---
+
